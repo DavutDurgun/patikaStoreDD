@@ -1,0 +1,2 @@
+# patikaStoreDD
+PatikaStore - Ürün Satış
