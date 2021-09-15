@@ -5,6 +5,7 @@ import {
   ScrollView,
   StatusBar,
   Text,
+  TextInput,
   useColorScheme,
   View,
 } from 'react-native';
@@ -15,8 +16,11 @@ const Home: () => Node = () => {
   return (
     <SafeAreaView style={homeStyle.container}>
       <View>
+        <TextInput style={{borderColor:'blue', borderStyle:"solid",borderWidth:1}}></TextInput>
+      </View>
+      <View>
         <Text style={homeStyle.kutu1}>kutu1</Text>
-      </View> 
+      </View>
 
     </SafeAreaView>
   );
