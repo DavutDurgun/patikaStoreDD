@@ -11,13 +11,12 @@ import {
 } from 'react-native';
 
 import Home from './components/Home/Home';
+import { data } from './productList.json'
 
 const App: () => Node = () => {
   return (
     <SafeAreaView style={style.container}>
-      <View>
-        <Home />
-      </View>
+        <Home data={data} />
     </SafeAreaView>
   );
 };

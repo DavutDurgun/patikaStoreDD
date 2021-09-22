@@ -1,28 +1,55 @@
 import React from 'react';
 import type { Node } from 'react';
 import {
-  SafeAreaView,
   ScrollView,
   StatusBar,
   Text,
   TextInput,
   useColorScheme,
   View,
+  FlatList,
+  Image,
 } from 'react-native';
 
-import homeStyle from '../../assets/styles/home';
+//style
+import style from './Home.styles'
 
-const Home: () => Node = () => {
+
+const Home: () => Node = ({ data }) => {
+  const renderItem = ({ item }) => {
+    return (
+      <View style={style.flatList_item}>
+        <Image
+          style={style.flatList_item_image}
+          source={{ uri: item.imgURL }}
+        />
+
+        <Text style={style.flatList_item_title}>{item.title}</Text>
+        <Text style={style.flatList_item_price}>{item.price}</Text>
+        {!item.inStock&&
+        <Text style={style.flatList_item_no_stok}>STOKTA YOK!</Text>
+        }
+      </View>
+    )
+  };
+
+  const keyExtractor = (item) => `${item.id}`;
+
   return (
-    <SafeAreaView style={homeStyle.container}>
-      <View>
-        <TextInput style={{borderColor:'blue', borderStyle:"solid",borderWidth:1}}></TextInput>
-      </View>
-      <View>
-        <Text style={homeStyle.kutu1}>kutu1</Text>
+    <View style={style.container}>
+      <View style={style.searchBar_content}>
+        <TextInput style={style.searchBar} placeholder="Ara..." ></TextInput>
       </View>
 
-    </SafeAreaView>
+      <FlatList
+        style={style.flatList_content}
+        data={data}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        numColumns="2"
+      />
+    </View>
+
   );
 };
 
